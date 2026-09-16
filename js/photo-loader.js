@@ -1,23 +1,15 @@
 (function () {
-  // TODO: paste your published Google Sheet CSV URL here
-  const SHEET_CSV_URL = "PASTE_PUBLISHED_SHEET_CSV_URL_HERE";
+  const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQsDDzFHzX4p8Ott8WVOr3GzQa-ELjkc84yPMjnEsqKYBH7MR0oeHHtDtkpYXhNxg7mTwxy_V5KU-4N/pub?gid=0&single=true&output=csv";
 
-  if (!SHEET_CSV_URL || SHEET_CSV_URL.indexOf("PASTE_") === 0) {
-    console.warn("photo-loader: SHEET_CSV_URL not set yet — using default photos.");
-    return;
-  }
-
-  // Converts a normal Google Drive share link into a direct-image URL.
   function toDirectImageUrl(url) {
     if (!url) return url;
     const driveMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
     if (driveMatch && driveMatch[1]) {
       return `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
     }
-    return url; // already a direct link (e.g. Imgur, Dropbox raw, etc.)
+    return url;
   }
 
-  // Minimal CSV parser — handles quoted fields with embedded commas.
   function parseCsv(text) {
     const rows = [];
     let row = [], field = "", inQuotes = false;
@@ -56,11 +48,7 @@
       const header = rows[0].map((h) => h.trim().toLowerCase());
       const spotIdx = header.indexOf("spot");
       const linkIdx = header.indexOf("photo link");
-
-      if (spotIdx === -1 || linkIdx === -1) {
-        console.warn('photo-loader: sheet needs "Spot" and "Photo Link" columns.');
-        return;
-      }
+      if (spotIdx === -1 || linkIdx === -1) return;
 
       const photoMap = {};
       for (let i = 1; i < rows.length; i++) {
@@ -70,10 +58,8 @@
       }
 
       document.querySelectorAll("[data-photo-spot]").forEach((el) => {
-        const spotName = el.getAttribute("data-photo-spot");
-        const url = photoMap[spotName];
-        if (!url) return; // no entry yet — leave the default photo in place
-
+        const url = photoMap[el.getAttribute("data-photo-spot")];
+        if (!url) return;
         if (el.tagName === "IMG") {
           el.src = url;
         } else {
@@ -81,7 +67,5 @@
         }
       });
     })
-    .catch((err) => {
-      console.warn("photo-loader: falling back to default photos —", err.message);
-    });
+    .catch(() => {});
 })();
