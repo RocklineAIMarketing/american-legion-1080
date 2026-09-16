@@ -301,6 +301,105 @@
     .story { padding: 64px 6%; }
   }
 
+  /* ---------- Veteran resources ---------- */
+  .resources {
+    background: var(--navy);
+    padding: 72px 5%;
+  }
+
+  .resources-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .resources-heading {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  .resources-heading .story-eyebrow {
+    color: var(--brass-light);
+  }
+
+  .resources-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 34px);
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .resource-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+
+  .resource-card.link-card {
+    background: rgba(244,239,228,0.06);
+    border: 1px solid rgba(244,239,228,0.18);
+  }
+
+  .resource-card.link-card:hover {
+    background: rgba(244,239,228,0.1);
+    border-color: rgba(244,239,228,0.32);
+  }
+
+  .resource-card .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    color: var(--brass-light);
+    margin-bottom: 10px;
+  }
+
+  .resource-card .title {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    color: var(--cream);
+  }
+
+  .resource-card.crisis-card {
+    background: var(--red);
+    border: 1px solid rgba(244,239,228,0.25);
+  }
+
+  .resource-card.crisis-card:hover {
+    background: #9E3232;
+  }
+
+  .resource-card.crisis-card .label {
+    color: rgba(244,239,228,0.85);
+  }
+
+  .resource-card.crisis-card .title {
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .resource-card.crisis-card .number {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    color: rgba(244,239,228,0.85);
+  }
+
+  @media (max-width: 780px) {
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media (max-width: 860px) {
     .nav-toggle { display: flex; }
 
@@ -388,6 +487,32 @@
     </div>
     <div class="story-photo">
       <img data-photo-spot="Home Story Photo" alt="Members of American Legion Post 1080">
+    </div>
+  </div>
+</section>
+
+<section class="resources">
+  <div class="resources-inner">
+    <div class="resources-heading">
+      <span class="story-eyebrow">Veteran Resources</span>
+      <h2>Support, close to home and close at hand.</h2>
+    </div>
+    <div class="resources-grid">
+      <a href="https://willcounty.gov/VAC/Services" target="_blank" rel="noopener" class="resource-card link-card">
+        <span class="label">Will County</span>
+        <span class="title">Veterans Assistance Commission</span>
+      </a>
+
+      <a href="tel:988,1" class="resource-card crisis-card">
+        <span class="label">24/7 Confidential Support</span>
+        <span class="title">Veterans Crisis Line</span>
+        <span class="number">Dial 988, then Press 1</span>
+      </a>
+
+      <a href="https://discover.va.gov" target="_blank" rel="noopener" class="resource-card link-card">
+        <span class="label">U.S. Department of Veterans Affairs</span>
+        <span class="title">Explore VA Benefits</span>
+      </a>
     </div>
   </div>
 </section>
