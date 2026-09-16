@@ -400,6 +400,47 @@
     }
   }
 
+  .onsite-banner {
+    margin-top: 40px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(244,239,228,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .onsite-banner p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: rgba(244,239,228,0.88);
+    max-width: 560px;
+    margin: 0;
+  }
+
+  .onsite-banner strong {
+    color: var(--cream);
+  }
+
+  .onsite-banner .btn-primary {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 700px) {
+    .onsite-banner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .onsite-banner p {
+      max-width: none;
+    }
+  }
+
   @media (max-width: 860px) {
     .nav-toggle { display: flex; }
 
@@ -513,6 +554,11 @@
         <span class="label">U.S. Department of Veterans Affairs</span>
         <span class="title">Explore VA Benefits</span>
       </a>
+    </div>
+
+    <div class="onsite-banner">
+      <p><strong>A Veteran Support Officer from the Illinois Department of Veterans Affairs is on-site every Tuesday, 9 AM – 4 PM</strong>, available to help with benefits, claims, and general questions — no appointment needed.</p>
+      <a href="/veterans-resources" class="btn btn-primary">See More Resources</a>
     </div>
   </div>
 </section>
