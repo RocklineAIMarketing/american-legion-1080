@@ -231,6 +231,76 @@
   }
   .btn-secondary:hover { border-color: var(--cream); }
 
+  /* ---------- Greeting / story section ---------- */
+  .story {
+    background: var(--cream);
+    padding: 88px 5%;
+  }
+
+  .story-grid {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .story-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: repeating-linear-gradient(
+      135deg,
+      #E7E1D2 0px, #E7E1D2 18px,
+      #DCD5C2 18px, #DCD5C2 36px
+    );
+    border: 1px solid rgba(22,34,60,0.12);
+  }
+
+  .story-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .story-eyebrow {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+
+  .story h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 3.4vw, 38px);
+    line-height: 1.2;
+    color: var(--navy-deep);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .story p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #3B3F47;
+    margin-bottom: 18px;
+    max-width: 60ch;
+  }
+
+  .story p:last-of-type { margin-bottom: 0; }
+
+  @media (max-width: 780px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .story { padding: 64px 6%; }
+  }
+
   @media (max-width: 860px) {
     .nav-toggle { display: flex; }
 
@@ -307,6 +377,20 @@
     </div>
   </div>
 </header>
+
+<section class="story">
+  <div class="story-grid">
+    <div>
+      <span class="story-eyebrow">Who We Are</span>
+      <h2>A post built on service, before and after the uniform.</h2>
+      <p>American Legion Post 1080 has stood as a gathering place for Joliet-area veterans and their families — a place to find support, stay connected, and give back to the community that stood behind us. Every member here has worn the uniform; what we do now is look out for one another and for the veterans who come after us.</p>
+      <p>From honoring those we've lost to helping neighbors navigate VA benefits, from Friday nights at the bar to fundraisers that give back to local causes, Post 1080 is where camaraderie turns into action.</p>
+    </div>
+    <div class="story-photo">
+      <img data-photo-spot="Home Story Photo" alt="Members of American Legion Post 1080">
+    </div>
+  </div>
+</section>
 
 <script>
   const navToggle = document.getElementById('navToggle');
