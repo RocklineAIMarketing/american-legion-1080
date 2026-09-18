@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — American Legion Post 1080</title>
+<style>
+  :root {
+    --navy: #16223C;
+    --navy-deep: #0D1526;
+    --brass: #C9A24B;
+    --brass-light: #E3C775;
+    --cream: #F4EFE4;
+    --red: #8C2B2B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', 'Iowan Old Style', serif;
+    background: var(--cream);
+  }
+
+  /* ---------- Page banner (nav + title, no hero photo) ---------- */
+  .page-banner {
+    position: relative;
+    background: var(--navy);
+  }
+
+  .navbar {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 5%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .brand-emblem {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 2px solid var(--brass-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--brass-light);
+    flex-shrink: 0;
+  }
+
+  .brand-text {
+    line-height: 1.15;
+  }
+
+  .brand-text .name {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    letter-spacing: 0.02em;
+  }
+
+  .brand-text .sub {
+    font-size: 12px;
+    color: var(--brass-light);
+    margin-top: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding-bottom: 6px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    border-color: var(--brass-light);
+    color: var(--brass-light);
+    outline: none;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 6;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--cream);
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .banner-title {
+    text-align: center;
+    padding: 8px 5% 56px;
+  }
+
+  .banner-title span {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--brass-light);
+    margin-bottom: 10px;
+  }
+
+  .banner-title h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 4vw, 44px);
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  @media (max-width: 860px) {
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+      flex-direction: column;
+      gap: 0;
+      width: min(78vw, 320px);
+      padding: 96px 8% 32px;
+      background: var(--navy-deep);
+      box-shadow: -8px 0 24px rgba(0,0,0,0.35);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .nav-links.open {
+      transform: translateX(0);
+    }
+
+    .nav-links li {
+      border-bottom: 1px solid rgba(244,239,228,0.12);
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 16px 0;
+      font-size: 16px;
+    }
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    background: var(--navy-deep);
+  }
+
+  .footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 64px 5% 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer-emblem {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--brass-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--brass-light);
+    flex-shrink: 0;
+  }
+
+  .footer-name {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+
+  .footer-brand a {
+    display: block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(244,239,228,0.75);
+    text-decoration: none;
+  }
+
+  .footer-brand a:hover {
+    color: var(--brass-light);
+  }
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(244,239,228,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .social-icon svg {
+    width: 17px;
+    height: 17px;
+    fill: var(--cream);
+  }
+
+  .social-icon:hover {
+    border-color: var(--brass-light);
+    background: rgba(244,239,228,0.06);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(244,239,228,0.12);
+    padding: 20px 5%;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    color: rgba(244,239,228,0.5);
+  }
+
+  /* ---------- Preamble ---------- */
+  .preamble {
+    background: var(--cream);
+    padding: 88px 5%;
+  }
+
+  .preamble-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .preamble-eyebrow {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--red);
+    margin-bottom: 12px;
+  }
+
+  .preamble h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 32px);
+    color: var(--navy-deep);
+    font-weight: 400;
+    margin-bottom: 28px;
+  }
+
+  .preamble-divider {
+    width: 56px;
+    height: 2px;
+    background: var(--brass);
+    margin: 0 auto 32px;
+  }
+
+  .preamble-text {
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.85;
+    color: #2A2F38;
+    margin-bottom: 24px;
+  }
+
+  .preamble-attribution {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    color: #6B6F76;
+    margin-bottom: 28px;
+  }
+
+  .btn {
+    padding: 13px 26px;
+    font-size: 14.5px;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--brass);
+    color: var(--navy-deep);
+  }
+  .btn-primary:hover { background: var(--brass-light); }
+
+  /* ---------- History ---------- */
+  .history {
+    background: var(--navy);
+    padding: 88px 5%;
+  }
+
+  .history-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .history-heading {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .history-heading .preamble-eyebrow {
+    color: var(--brass-light);
+  }
+
+  .history-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 34px);
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .history-intro p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: rgba(244,239,228,0.85);
+    text-align: center;
+    max-width: 65ch;
+    margin: 0 auto 16px;
+  }
+
+  .timeline {
+    position: relative;
+    margin: 56px auto 0;
+    max-width: 560px;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: rgba(244,239,228,0.22);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 32px;
+    padding-bottom: 32px;
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--brass-light);
+    border: 2px solid var(--navy);
+  }
+
+  .timeline-year {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: var(--brass-light);
+    margin-bottom: 4px;
+  }
+
+  .timeline-desc {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: rgba(244,239,228,0.85);
+  }
+
+  /* ---------- Band ---------- */
+  .band {
+    background: var(--cream);
+    padding: 88px 5%;
+  }
+
+  .band-grid {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .band-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 6px;
+    overflow: hidden;
+    background: repeating-linear-gradient(
+      135deg,
+      #E7E1D2 0px, #E7E1D2 18px,
+      #DCD5C2 18px, #DCD5C2 36px
+    );
+    border: 1px solid rgba(22,34,60,0.12);
+  }
+
+  .band-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .band-text .preamble-eyebrow {
+    color: var(--red);
+    text-align: left;
+  }
+
+  .band-text h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3.2vw, 34px);
+    color: var(--navy-deep);
+    font-weight: 400;
+    margin-bottom: 18px;
+  }
+
+  .band-text p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: #3B3F47;
+    margin-bottom: 24px;
+    max-width: 56ch;
+  }
+
+  .band-stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+
+  .band-stat .num {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .band-stat .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+    color: #6B6F76;
+  }
+
+  @media (max-width: 780px) {
+    .band-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .band-text .preamble-eyebrow,
+    .band-text,
+    .band-stats {
+      text-align: center;
+      justify-content: center;
+    }
+    .band-text p { margin-left: auto; margin-right: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="page-banner">
+  <nav class="navbar">
+    <a href="/" class="brand">
+      <span class="brand-emblem">1080</span>
+      <span class="brand-text">
+        <div class="name">American Legion Post 1080</div>
+        <div class="sub">Joliet, Illinois</div>
+      </span>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/about">About</a></li>
+      <li><a href="/veterans-resources">Veterans Resources</a></li>
+      <li><a href="/membership">Membership</a></li>
+      <li><a href="/events">Events</a></li>
+      <li><a href="/bar">Bar</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="banner-title">
+    <span>Our Story</span>
+    <h1>About Post 1080</h1>
+  </div>
+</header>
+
+<!-- Page content goes here -->
+
+<section class="preamble">
+  <div class="preamble-inner">
+    <span class="preamble-eyebrow">The American Legion</span>
+    <h2>Preamble to the Constitution</h2>
+    <div class="preamble-divider"></div>
+    <p class="preamble-text">"For God and country, we associate ourselves together for the following purposes: to uphold and defend the Constitution of the United States of America; to maintain law and order; to foster and perpetuate a one hundred percent Americanism; to preserve the memories and incidents of our associations in all wars; to inculcate a sense of individual obligation to the community, state and nation; to combat the autocracy of both the classes and the masses; to make right the master of might; to promote peace and goodwill on earth; to safeguard and transmit to posterity the principles of justice, freedom and democracy; to consecrate and sanctify our comradeship by our devotion to mutual helpfulness."</p>
+    <p class="preamble-attribution">— Adopted 1919, The American Legion National Constitution</p>
+    <a href="/constitution" class="btn btn-primary">Read the Full Constitution</a>
+  </div>
+</section>
+
+<section class="history">
+  <div class="history-inner">
+    <div class="history-heading">
+      <span class="preamble-eyebrow">Our History</span>
+      <h2>How Post 1080 Came to Be</h2>
+    </div>
+
+    <div class="history-intro">
+      <p>[A short introduction to the post's history — when it was chartered, who founded it, and what brought this group of veterans together in Joliet. Swap this placeholder for the real story once you have it.]</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">[Year]</div>
+        <div class="timeline-desc">[Post 1080 is chartered — founding members, original meeting location, or other founding detail.]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">[Year]</div>
+        <div class="timeline-desc">[A notable milestone — a new post home, a major community project, an anniversary.]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">[Year]</div>
+        <div class="timeline-desc">[Another milestone in the post's history.]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">[Year]</div>
+        <div class="timeline-desc">[A recent or ongoing chapter — current programs, recent recognition, etc.]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">[Year]</div>
+        <div class="timeline-desc">[A milestone in the post's history.]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">[Year]</div>
+        <div class="timeline-desc">[A milestone in the post's history.]</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">[Year]</div>
+        <div class="timeline-desc">[A milestone in the post's history.]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="band-grid">
+    <div class="band-photo">
+      <img data-photo-spot="Band Photo" alt="The Joliet American Legion Band">
+    </div>
+    <div class="band-text">
+      <span class="preamble-eyebrow">Post 1080 Proudly Sponsors</span>
+      <h2>The Joliet American Legion Band</h2>
+
+      <div class="band-stats">
+        <div class="band-stat">
+          <div class="num">39</div>
+          <div class="label">National Titles</div>
+        </div>
+        <div class="band-stat">
+          <div class="num">52</div>
+          <div class="label">State Titles</div>
+        </div>
+        <div class="band-stat">
+          <div class="num">7</div>
+          <div class="label">U.S. Presidents Performed For</div>
+        </div>
+      </div>
+
+      <p>Founded in 1946 and sponsored by Post 1080, the Joliet American Legion Band has become one of the most decorated concert bands in the country. Open to musicians 18 and up, the band rehearses Tuesday evenings and performs more than 20 concerts and parades a year — from local community events to the American Legion's national competitions.</p>
+
+      <a href="/membership" class="btn btn-primary">Learn More About the Band</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-emblem">1080</div>
+      <div>
+        <div class="footer-name">American Legion Post 1080</div>
+        <a href="https://www.google.com/maps/search/?api=1&query=2625+Ingalls+Ave.%2C+Joliet%2C+IL+60435" target="_blank" rel="noopener">2625 Ingalls Ave.<br>Joliet, IL 60435</a>
+        <a href="tel:8157292254">815-729-2254</a>
+      </div>
+    </div>
+
+    <div class="footer-social">
+      <a href="https://www.facebook.com/profile.php?id=100080108563961" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 American Legion Post 1080. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  }, { passive: true });
+</script>
+
+<script src="photo-loader.js"></script>
+
+</body>
+</html>
