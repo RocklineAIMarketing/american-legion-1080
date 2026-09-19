@@ -24,7 +24,6 @@
   /* ---------- Page banner (nav + title, compact — matches About page) ---------- */
   .hero {
     position: relative;
-    overflow: hidden;
   }
 
   .hero-bg {
@@ -44,7 +43,11 @@
     background: linear-gradient(180deg, rgba(9,14,26,0.78) 0%, rgba(9,14,26,0.6) 60%, rgba(9,14,26,0.72) 100%);
   }
 
-  .hero .navbar,
+  .hero .navbar {
+    position: relative;
+    z-index: 10;
+  }
+
   .hero .hero-content {
     position: relative;
     z-index: 2;
@@ -1000,28 +1003,52 @@
     }
   }
 
-  /* ---------- Host an event CTA ---------- */
-  .host-cta {
+  /* ---------- Host an event / Bar teaser (split) ---------- */
+  .split-cta {
     background: var(--cream);
-    padding: 72px 5%;
+  }
+
+  .split-cta-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .split-cta-panel {
+    padding: 72px 6%;
     text-align: center;
   }
 
-  .host-cta h2 {
-    font-family: Georgia, serif;
-    font-size: clamp(24px, 2.8vw, 30px);
-    color: var(--navy-deep);
-    font-weight: 400;
-    margin-bottom: 20px;
+  .split-cta-panel:first-child {
+    border-right: 1px solid rgba(22,34,60,0.12);
   }
 
-  .host-cta p {
+  .split-cta-panel h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(22px, 2.6vw, 28px);
+    color: var(--navy-deep);
+    font-weight: 400;
+    margin-bottom: 18px;
+  }
+
+  .split-cta-panel p {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 15.5px;
+    font-size: 15px;
     line-height: 1.7;
     color: #3B3F47;
-    max-width: 620px;
-    margin: 0 auto 28px;
+    max-width: 440px;
+    margin: 0 auto 26px;
+  }
+
+  @media (max-width: 780px) {
+    .split-cta-inner {
+      grid-template-columns: 1fr;
+    }
+    .split-cta-panel:first-child {
+      border-right: none;
+      border-bottom: 1px solid rgba(22,34,60,0.12);
+    }
   }
 </style>
 </head>
@@ -1116,10 +1143,20 @@
   }, { passive: true });
 </script>
 
-<section class="host-cta">
-  <h2>Interested in hosting an event?</h2>
-  <p>Post 1080's hall is available for private parties, wedding and graduation receptions, memorial and celebration-of-life gatherings, fundraisers, and community or corporate meetings. [Confirm exact rental policies, capacity, and pricing with the post before publishing — placeholder based on typical Legion post rentals.]</p>
-  <a href="/contact" class="btn btn-primary">Contact Us</a>
+<section class="split-cta">
+  <div class="split-cta-inner">
+    <div class="split-cta-panel">
+      <h2>Interested in hosting an event?</h2>
+      <p>Post 1080's hall is available for private parties, wedding and graduation receptions, memorial and celebration-of-life gatherings, fundraisers, and community or corporate meetings. [Confirm exact rental policies, capacity, and pricing with the post before publishing — placeholder based on typical Legion post rentals.]</p>
+      <a href="/contact" class="btn btn-primary">Contact Us</a>
+    </div>
+
+    <div class="split-cta-panel">
+      <h2>Looking for a drink?</h2>
+      <p>The Post 1080 bar is open to members and guests — cold drinks and good company, right down the hall from the action.</p>
+      <a href="/bar" class="btn btn-primary">Visit the Bar</a>
+    </div>
+  </div>
 </section>
 
 <footer class="site-footer">
