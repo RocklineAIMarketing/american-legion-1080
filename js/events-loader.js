@@ -1,5 +1,4 @@
 (function () {
-  // TODO: paste the published Events Google Sheet CSV URL here
   const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDvIkBPFbdeW1juLvhHdX6B29DP2pj0pYyzYsT5DzmYre6Rkl--JwPEtHbmBscoqNBvNWkpiU1oY7T/pub?output=csv";
 
   const listEl = document.getElementById("events-list");
