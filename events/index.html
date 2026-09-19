@@ -902,6 +902,94 @@
     line-height: 1.6;
     color: #3B3F47;
   }
+
+  /* ---------- Past Events (spotlight, max 3) ---------- */
+  .past-events-section {
+    background: var(--navy);
+    padding: 80px 5%;
+  }
+
+  .past-events-section .events-heading span { color: var(--brass-light); }
+  .past-events-section .events-heading h2 { color: var(--cream); }
+
+  .past-events-section .events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .past-events-section .event-card {
+    background: rgba(244,239,228,0.04);
+    border: 1px solid rgba(244,239,228,0.15);
+  }
+
+  .past-events-section .event-card .event-date {
+    color: var(--brass-light);
+  }
+
+  .past-events-section .event-card h3 {
+    color: var(--cream);
+  }
+
+  .past-events-section .event-card p {
+    color: rgba(244,239,228,0.8);
+  }
+
+  .past-events-section .events-status {
+    color: rgba(244,239,228,0.7);
+  }
+
+  @media (max-width: 900px) {
+    .past-events-section .events-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- Photo Gallery ---------- */
+  .gallery-section {
+    background: var(--cream);
+    padding: 80px 5% 88px;
+  }
+
+  .gallery-grid {
+    max-width: 1020px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid rgba(22,34,60,0.12);
+  }
+
+  .gallery-grid .gallery-photo {
+    aspect-ratio: 1 / 1;
+    background: repeating-linear-gradient(
+      135deg,
+      #E7E1D2 0px, #E7E1D2 18px,
+      #DCD5C2 18px, #DCD5C2 36px
+    );
+    overflow: hidden;
+  }
+
+  .gallery-grid .gallery-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 700px) {
+    .gallery-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      border: none;
+    }
+
+    .gallery-grid .gallery-photo {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      aspect-ratio: 4 / 3;
+    }
+  }
 </style>
 </head>
 <body>
@@ -946,6 +1034,34 @@
   </div>
   <div id="events-list" class="events-grid">
     <p class="events-status">Loading events…</p>
+  </div>
+</section>
+
+<section class="past-events-section">
+  <div class="events-heading">
+    <span>Past Events</span>
+    <h2>Recently at Post 1080</h2>
+  </div>
+  <div id="past-events-list" class="events-grid">
+    <p class="events-status">Loading events…</p>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="events-heading">
+    <span>Gallery</span>
+    <h2>Around the Post</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-photo"><img data-photo-spot="Gallery Photo 1" alt=""></div>
+    <div class="gallery-photo"><img data-photo-spot="Gallery Photo 2" alt=""></div>
+    <div class="gallery-photo"><img data-photo-spot="Gallery Photo 3" alt=""></div>
+    <div class="gallery-photo"><img data-photo-spot="Gallery Photo 4" alt=""></div>
+    <div class="gallery-photo"><img data-photo-spot="Gallery Photo 5" alt=""></div>
+    <div class="gallery-photo"><img data-photo-spot="Gallery Photo 6" alt=""></div>
+    <div class="gallery-photo"><img data-photo-spot="Gallery Photo 7" alt=""></div>
+    <div class="gallery-photo"><img data-photo-spot="Gallery Photo 8" alt=""></div>
+    <div class="gallery-photo"><img data-photo-spot="Gallery Photo 9" alt=""></div>
   </div>
 </section>
 
