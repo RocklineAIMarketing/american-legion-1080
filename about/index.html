@@ -21,10 +21,36 @@
     background: var(--cream);
   }
 
-  /* ---------- Page banner (nav + title, no hero photo) ---------- */
+  /* ---------- Page banner (nav + title, with background photo) ---------- */
   .page-banner {
     position: relative;
+  }
+
+  .page-banner-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     background: var(--navy);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .page-banner::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(9,14,26,0.78) 0%, rgba(9,14,26,0.6) 60%, rgba(9,14,26,0.72) 100%);
+  }
+
+  .page-banner .navbar {
+    position: relative;
+    z-index: 10;
+  }
+
+  .page-banner .banner-title {
+    position: relative;
+    z-index: 2;
   }
 
   .navbar {
@@ -538,6 +564,7 @@
 <body>
 
 <header class="page-banner">
+  <div class="page-banner-bg" data-photo-spot="Header Hero"></div>
   <nav class="navbar">
     <a href="/" class="brand">
       <span class="brand-emblem">1080</span>
