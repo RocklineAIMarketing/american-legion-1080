@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veterans Resources — American Legion Post 1080</title>
+<style>
+  :root {
+    --navy: #16223C;
+    --navy-deep: #0D1526;
+    --brass: #C9A24B;
+    --brass-light: #E3C775;
+    --cream: #F4EFE4;
+    --red: #8C2B2B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', 'Iowan Old Style', serif;
+    background: var(--cream);
+  }
+
+  /* ---------- Page banner (nav + title, compact — matches About page) ---------- */
+  .hero {
+    position: relative;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: var(--navy);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(9,14,26,0.78) 0%, rgba(9,14,26,0.6) 60%, rgba(9,14,26,0.72) 100%);
+  }
+
+  .hero .navbar {
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- Nav ---------- */
+  .navbar {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 5%;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--cream);
+    text-decoration: none;
+  }
+
+  .brand-emblem {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 2px solid var(--brass-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--brass-light);
+    flex-shrink: 0;
+  }
+
+  .brand-text {
+    line-height: 1.15;
+  }
+
+  .brand-text .name {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    letter-spacing: 0.02em;
+  }
+
+  .brand-text .sub {
+    font-size: 12px;
+    color: var(--brass-light);
+    margin-top: 2px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding-bottom: 6px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    border-color: var(--brass-light);
+    color: var(--brass-light);
+    outline: none;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 6;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: var(--cream);
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ---------- Banner content ---------- */
+  .hero-content {
+    text-align: center;
+    padding: 8px 5% 56px;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--brass-light);
+    margin-bottom: 10px;
+  }
+
+  .hero-content h1 {
+    font-family: Georgia, serif;
+    font-size: clamp(30px, 4vw, 44px);
+    color: var(--cream);
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+
+  .hero-content p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: rgba(244,239,228,0.85);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .btn {
+    padding: 13px 26px;
+    font-size: 14.5px;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--brass);
+    color: var(--navy-deep);
+  }
+  .btn-primary:hover { background: var(--brass-light); }
+
+  /* ---------- Greeting / story section ---------- */
+  .story {
+    background: var(--cream);
+    padding: 88px 5%;
+  }
+
+  .story-grid {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .story-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: repeating-linear-gradient(
+      135deg,
+      #E7E1D2 0px, #E7E1D2 18px,
+      #DCD5C2 18px, #DCD5C2 36px
+    );
+    border: 1px solid rgba(22,34,60,0.12);
+  }
+
+  .story-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .story-eyebrow {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+
+  .story h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 3.4vw, 38px);
+    line-height: 1.2;
+    color: var(--navy-deep);
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+
+  .story p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #3B3F47;
+    margin-bottom: 18px;
+    max-width: 60ch;
+  }
+
+  .story p:last-of-type { margin-bottom: 0; }
+
+  @media (max-width: 780px) {
+    .story-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .story { padding: 64px 6%; }
+  }
+
+  /* ---------- Veteran resources ---------- */
+  .resources {
+    background: var(--navy);
+    padding: 72px 5%;
+  }
+
+  .resources-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .resources-heading {
+    text-align: center;
+    margin-bottom: 44px;
+  }
+
+  .resources-heading .story-eyebrow {
+    color: var(--brass-light);
+  }
+
+  .resources-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 34px);
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .resources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .resource-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 32px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+
+  .resource-card.link-card {
+    background: rgba(244,239,228,0.06);
+    border: 1px solid rgba(244,239,228,0.18);
+  }
+
+  .resource-card.link-card:hover {
+    background: rgba(244,239,228,0.1);
+    border-color: rgba(244,239,228,0.32);
+  }
+
+  .resource-card .label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    color: var(--brass-light);
+    margin-bottom: 10px;
+  }
+
+  .resource-card .title {
+    font-family: Georgia, serif;
+    font-size: 19px;
+    color: var(--cream);
+  }
+
+  .resource-card.crisis-card {
+    background: var(--red);
+    border: 1px solid rgba(244,239,228,0.25);
+  }
+
+  .resource-card.crisis-card:hover {
+    background: #9E3232;
+  }
+
+  .resource-card.crisis-card .label {
+    color: rgba(244,239,228,0.85);
+  }
+
+  .resource-card.crisis-card .title {
+    font-size: 22px;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .resource-card.crisis-card .number {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    color: rgba(244,239,228,0.85);
+  }
+
+  @media (max-width: 780px) {
+    .resources-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .onsite-banner {
+    margin-top: 40px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(244,239,228,0.15);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .onsite-banner p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: rgba(244,239,228,0.88);
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .onsite-banner strong {
+    color: var(--cream);
+  }
+
+  .onsite-banner .btn-primary {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 700px) {
+    .onsite-banner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .onsite-banner p {
+      max-width: none;
+    }
+  }
+
+  /* ---------- Meet the Members ---------- */
+  .leadership {
+    background: var(--cream);
+    padding: 88px 5%;
+  }
+
+  .leadership-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .leadership-heading {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+
+  .leadership-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(28px, 3.4vw, 38px);
+    color: var(--navy-deep);
+    font-weight: 400;
+  }
+
+  .leadership-grid {
+    margin-bottom: 0;
+  }
+
+  /* Featured commander */
+  .commander-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 72px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(22,34,60,0.12);
+  }
+
+  .commander-photo {
+    width: 220px;
+    aspect-ratio: 3 / 4;
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 28px;
+    background: repeating-linear-gradient(
+      135deg,
+      #E7E1D2 0px, #E7E1D2 18px,
+      #DCD5C2 18px, #DCD5C2 36px
+    );
+    border: 1px solid rgba(22,34,60,0.12);
+  }
+
+  .commander-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .commander-text .story-eyebrow {
+    color: var(--red);
+  }
+
+  .commander-text h3 {
+    font-family: Georgia, serif;
+    font-size: clamp(24px, 2.8vw, 30px);
+    color: var(--navy-deep);
+    font-weight: 400;
+    margin-bottom: 14px;
+  }
+
+  .commander-text p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: #3B3F47;
+    margin: 0 auto 22px;
+  }
+
+  /* Smaller officer cards */
+  .officers-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .officer-card {
+    text-align: center;
+    width: 170px;
+  }
+
+  .officer-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto 16px;
+    background: repeating-linear-gradient(
+      135deg,
+      #E7E1D2 0px, #E7E1D2 18px,
+      #DCD5C2 18px, #DCD5C2 36px
+    );
+    border: 1px solid rgba(22,34,60,0.12);
+  }
+
+  .officer-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .officer-card .name {
+    font-family: Georgia, serif;
+    font-size: 15.5px;
+    color: var(--navy-deep);
+    margin-bottom: 3px;
+  }
+
+  .officer-card .title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .officer-card .service {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    color: #6B6F76;
+  }
+
+  .leadership-cta {
+    text-align: center;
+    margin-top: 64px;
+  }
+
+  .leadership-cta p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    color: #3B3F47;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 560px) {
+    .officer-card { width: 140px; }
+    .officers-row { gap: 24px; }
+  }
+
+  /* ---------- Bar / Events teaser ---------- */
+  .teaser {
+    background: var(--navy);
+    padding: 88px 5%;
+  }
+
+  .teaser-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .teaser-heading {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .teaser-heading .story-eyebrow {
+    color: var(--brass-light);
+  }
+
+  .teaser-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 34px);
+    color: var(--cream);
+    font-weight: 400;
+  }
+
+  .teaser-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .teaser-card {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    min-height: 340px;
+    display: flex;
+    align-items: flex-end;
+    text-decoration: none;
+    background: repeating-linear-gradient(
+      135deg,
+      #1C2B4A 0px, #1C2B4A 18px,
+      #17223C 18px, #17223C 36px
+    );
+    background-size: cover;
+    background-position: center;
+  }
+
+  .teaser-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(9,14,26,0) 30%, rgba(9,14,26,0.85) 100%);
+  }
+
+  .teaser-card-content {
+    position: relative;
+    z-index: 1;
+    padding: 32px;
+  }
+
+  .teaser-card .label {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+    color: var(--brass-light);
+    margin-bottom: 8px;
+  }
+
+  .teaser-card h3 {
+    font-family: Georgia, serif;
+    font-size: 24px;
+    color: var(--cream);
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .teaser-card p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: rgba(244,239,228,0.85);
+    max-width: 42ch;
+    margin-bottom: 16px;
+  }
+
+  .teaser-card .teaser-link {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--brass-light);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .teaser-card:hover .teaser-link { text-decoration: underline; }
+
+  @media (max-width: 780px) {
+    .teaser-grid {
+      grid-template-columns: 1fr;
+    }
+    .teaser-card { min-height: 280px; }
+  }
+
+  @media (max-width: 860px) {
+    .nav-toggle { display: flex; }
+
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 5;
+      flex-direction: column;
+      gap: 0;
+      width: min(78vw, 320px);
+      padding: 96px 8% 32px;
+      background: var(--navy-deep);
+      box-shadow: -8px 0 24px rgba(0,0,0,0.35);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+
+    .nav-links.open {
+      transform: translateX(0);
+    }
+
+    .nav-links li {
+      border-bottom: 1px solid rgba(244,239,228,0.12);
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 16px 0;
+      font-size: 16px;
+    }
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    background: var(--navy-deep);
+  }
+
+  .footer-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 64px 5% 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer-emblem {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--brass-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Georgia, serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--brass-light);
+    flex-shrink: 0;
+  }
+
+  .footer-name {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+
+  .footer-brand a {
+    display: block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(244,239,228,0.75);
+    text-decoration: none;
+  }
+
+  .footer-brand a:hover {
+    color: var(--brass-light);
+  }
+
+  .footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(244,239,228,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .social-icon svg {
+    width: 17px;
+    height: 17px;
+    fill: var(--cream);
+  }
+
+  .social-icon:hover {
+    border-color: var(--brass-light);
+    background: rgba(244,239,228,0.06);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(244,239,228,0.12);
+    padding: 20px 5%;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12.5px;
+    color: rgba(244,239,228,0.5);
+  }
+
+  /* ---------- National Resources ---------- */
+  .national-resources {
+    background: var(--cream);
+    padding: 88px 5%;
+  }
+
+  .national-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .national-heading {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .national-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 34px);
+    color: var(--navy-deep);
+    font-weight: 400;
+  }
+
+  .national-heading p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    color: #6B6F76;
+    max-width: 560px;
+    margin: 12px auto 0;
+    line-height: 1.6;
+  }
+
+  .national-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .national-card {
+    background: #FFFDF8;
+    border: 1px solid rgba(22,34,60,0.12);
+    border-radius: 6px;
+    padding: 28px 24px;
+    text-decoration: none;
+  }
+
+  .national-card:hover {
+    border-color: var(--brass);
+  }
+
+  .national-card h3 {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: var(--navy-deep);
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+
+  .national-card p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #3B3F47;
+  }
+
+  @media (max-width: 900px) {
+    .national-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .national-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- Buddy Check / Membership (split) ---------- */
+  .split-cta {
+    background: var(--navy);
+  }
+
+  .split-cta-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .split-cta-panel {
+    padding: 72px 6%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .split-cta-panel .btn {
+    margin-top: auto;
+  }
+
+  .split-cta-panel:first-child {
+    border-right: 1px solid rgba(244,239,228,0.15);
+  }
+
+  .split-cta-panel .story-eyebrow {
+    color: var(--brass-light);
+    text-align: center;
+  }
+
+  .split-cta-panel h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(22px, 2.6vw, 28px);
+    color: var(--cream);
+    font-weight: 400;
+    margin-bottom: 18px;
+  }
+
+  .split-cta-panel p {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(244,239,228,0.85);
+    max-width: 440px;
+    margin: 0 auto 26px;
+  }
+
+  @media (max-width: 780px) {
+    .split-cta-inner {
+      grid-template-columns: 1fr;
+    }
+    .split-cta-panel:first-child {
+      border-right: none;
+      border-bottom: 1px solid rgba(244,239,228,0.15);
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg" data-photo-spot="Header Hero"></div>
+  <nav class="navbar">
+    <a href="/" class="brand">
+      <span class="brand-emblem">1080</span>
+      <span class="brand-text">
+        <div class="name">American Legion Post 1080</div>
+        <div class="sub">Joliet, Illinois</div>
+      </span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/about">About</a></li>
+      <li><a href="/veterans-resources">Veterans Resources</a></li>
+      <li><a href="/membership">Membership</a></li>
+      <li><a href="/events">Events</a></li>
+      <li><a href="/bar">Bar</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <div class="hero-content">
+    <span class="hero-eyebrow">Here to help those who served</span>
+    <h1>Veterans Resources</h1>
+    <p>Support and services for veterans and their families, from local assistance to national benefits.</p>
+  </div>
+</header>
+
+<section class="resources">
+  <div class="resources-inner">
+    <div class="resources-heading">
+      <span class="story-eyebrow">Local Resources</span>
+      <h2>Support, Close to Home</h2>
+    </div>
+    <div class="resources-grid">
+      <a href="https://willcounty.gov/VAC/Services" target="_blank" rel="noopener" class="resource-card link-card">
+        <span class="label">Will County</span>
+        <span class="title">Veterans Assistance Commission</span>
+      </a>
+
+      <a href="tel:988,1" class="resource-card crisis-card">
+        <span class="label">24/7 Confidential Support</span>
+        <span class="title">Veterans Crisis Line</span>
+        <span class="number">Dial 988, then Press 1</span>
+      </a>
+
+      <a href="https://discover.va.gov" target="_blank" rel="noopener" class="resource-card link-card">
+        <span class="label">U.S. Department of Veterans Affairs</span>
+        <span class="title">Explore VA Benefits</span>
+      </a>
+    </div>
+
+    <div class="onsite-banner">
+      <p><strong>A Veteran Support Officer from the Illinois Department of Veterans Affairs is on-site every Tuesday, 9 AM – 4 PM</strong>, available to help with benefits, claims, and general questions — no appointment needed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="national-resources">
+  <div class="national-inner">
+    <div class="national-heading">
+      <span class="story-eyebrow">National Resources</span>
+      <h2>What Legion Membership Connects You To</h2>
+      <p>Beyond the post, The American Legion's national organization offers programs and support available to members and their families nationwide.</p>
+    </div>
+    <div class="national-grid">
+      <a href="https://www.legion.org/member-services/veterans-services/veterans-benefits" target="_blank" rel="noopener" class="national-card">
+        <h3>Benefits & Claims</h3>
+        <p>Accredited Legion service officers provide free, expert help filing VA disability claims and navigating benefits.</p>
+      </a>
+
+      <a href="https://www.legion.org/member-services/veterans-services/veterans-education" target="_blank" rel="noopener" class="national-card">
+        <h3>Education</h3>
+        <p>GI Bill guidance, state education assistance, and Legion scholarship programs for members and their families.</p>
+      </a>
+
+      <a href="https://www.legion.org/member-services/veterans-services" target="_blank" rel="noopener" class="national-card">
+        <h3>Employment</h3>
+        <p>Resources connecting veterans with employers who understand and value military experience.</p>
+      </a>
+
+      <a href="https://www.legion.org/advocacy/be-the-one" target="_blank" rel="noopener" class="national-card">
+        <h3>Health & Mental Health</h3>
+        <p>Be The One — the Legion's mission to reduce veteran suicide through awareness, training, and peer support.</p>
+      </a>
+
+      <a href="https://www.legion.org/get-involved/community-programs" target="_blank" rel="noopener" class="national-card">
+        <h3>Financial Assistance</h3>
+        <p>Temporary Financial Assistance for Legion families with minor children, and disaster relief through the National Emergency Fund.</p>
+      </a>
+
+      <a href="https://www.legion.org/get-involved/community-programs" target="_blank" rel="noopener" class="national-card">
+        <h3>Homeless Veteran Support</h3>
+        <p>National advocacy and a dedicated task force focused on housing, health care, and employment for homeless veterans.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="split-cta">
+  <div class="split-cta-inner">
+    <div class="split-cta-panel">
+      <span class="story-eyebrow">Be The One</span>
+      <h2>Check In. Reach Out.</h2>
+      <p>A simple phone call can make all the difference. As part of the Legion's Be The One mission, our members conduct Buddy Checks — reaching out to fellow veterans just to talk, listen, and make sure no one is forgotten.</p>
+      <a href="https://www.legion.org/advocacy/be-the-one" target="_blank" rel="noopener" class="btn btn-primary">Learn About Buddy Checks</a>
+    </div>
+
+    <div class="split-cta-panel">
+      <span class="story-eyebrow">Join Post 1080</span>
+      <h2>Not a member yet?</h2>
+      <p>Membership connects you to your local post and everything the Legion offers nationally — support, community, and a place to belong.</p>
+      <a href="/membership" class="btn btn-primary">Become a Member</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    if (navLinks.classList.contains('open')) {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }
+  }, { passive: true });
+</script>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-emblem">1080</div>
+      <div>
+        <div class="footer-name">American Legion Post 1080</div>
+        <a href="https://www.google.com/maps/search/?api=1&query=2625+Ingalls+Ave.%2C+Joliet%2C+IL+60435" target="_blank" rel="noopener">2625 Ingalls Ave.<br>Joliet, IL 60435</a>
+        <a href="tel:8157292254">815-729-2254</a>
+      </div>
+    </div>
+
+    <div class="footer-social">
+      <a href="https://www.facebook.com/profile.php?id=100080108563961" target="_blank" rel="noopener" aria-label="Facebook" class="social-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.77-3.9 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.89h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 American Legion Post 1080. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="../js/photo-loader.js"></script>
+
+</body>
+</html>
