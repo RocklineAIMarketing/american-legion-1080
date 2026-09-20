@@ -56,7 +56,7 @@
     return events.map((e) => {
       const dateTime = [e.date, e.time].filter(Boolean).join(" • ");
       const photoBlock = e.photo
-        ? `<div class="event-card-photo"><div class="photo-backdrop" style="background-image:url('${toDirectImageUrl(e.photo)}')"></div><img src="${toDirectImageUrl(e.photo)}" alt="${escapeHtml(e.name)}"></div>`
+        ? `<div class="event-card-photo"><img src="${toDirectImageUrl(e.photo)}" alt="${escapeHtml(e.name)}"></div>`
         : "";
       return `
         <div class="event-card">
