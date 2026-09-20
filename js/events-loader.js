@@ -146,10 +146,12 @@
           return a.parsedDate - b.parsedDate;
         });
 
-      const past = events
+      const pastAll = events
         .filter((e) => e.parsedDate && e.parsedDate < today)
-        .sort((a, b) => b.parsedDate - a.parsedDate)
-        .slice(0, 3);
+        .sort((a, b) => b.parsedDate - a.parsedDate);
+
+      const past = pastAll.slice(0, 3);
+      const galleryEvents = pastAll.slice(3, 12);
 
       if (listEl) {
         listEl.innerHTML = upcoming.length
@@ -162,6 +164,19 @@
           ? renderCards(past)
           : '<p class="events-status">No past events highlighted yet.</p>';
       }
+
+      const galleryImgs = document.querySelectorAll(".gallery-grid .gallery-photo img");
+      galleryImgs.forEach((img, i) => {
+        const ev = galleryEvents[i];
+        if (ev && ev.photo) {
+          img.src = toDirectImageUrl(ev.photo);
+          img.alt = ev.name || "";
+          img.style.display = "";
+        } else {
+          img.removeAttribute("src");
+          img.style.display = "none";
+        }
+      });
     })
     .catch((err) => {
       const msg = '<p class="events-status">Couldn\'t load events right now — check back soon!</p>';
