@@ -15,7 +15,7 @@
     if (!url) return url;
     const driveMatch = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/[?&]id=([a-zA-Z0-9_-]+)/);
     if (driveMatch && driveMatch[1]) {
-      return `https://drive.google.com/uc?export=view&id=${driveMatch[1]}`;
+      return `https://lh3.googleusercontent.com/d/${driveMatch[1]}`;
     }
     return url;
   }
