@@ -281,6 +281,11 @@
     padding: 72px 5%;
   }
 
+  .immediate-support {
+    background: var(--navy-deep);
+    padding: 72px 5%;
+  }
+
   .resources-inner {
     max-width: 1120px;
     margin: 0 auto;
@@ -307,6 +312,12 @@
     grid-template-columns: 1fr 1.2fr 1fr;
     gap: 24px;
     align-items: stretch;
+  }
+
+  .resources-grid.two-col {
+    grid-template-columns: 1fr 1fr;
+    max-width: 760px;
+    margin: 0 auto;
   }
 
   .resource-card {
@@ -979,27 +990,59 @@
   </div>
 </header>
 
+<section class="immediate-support">
+  <div class="resources-inner">
+    <div class="resources-heading">
+      <span class="story-eyebrow">24/7 Confidential Support</span>
+      <h2>Immediate Support</h2>
+    </div>
+    <div class="resources-grid">
+      <a href="tel:988,1" class="resource-card crisis-card">
+        <span class="label">Call</span>
+        <span class="title">Veterans Crisis Line</span>
+        <span class="number">Dial 988, then Press 1</span>
+      </a>
+
+      <a href="https://www.veteranscrisisline.net/get-help-now/chat/" target="_blank" rel="noopener" class="resource-card crisis-card">
+        <span class="label">Chat</span>
+        <span class="title">Chat Online</span>
+        <span class="number">veteranscrisisline.net</span>
+      </a>
+
+      <a href="sms:838255" class="resource-card crisis-card">
+        <span class="label">Text</span>
+        <span class="title">Text for Support</span>
+        <span class="number">Text 838255</span>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="resources">
   <div class="resources-inner">
     <div class="resources-heading">
       <span class="story-eyebrow">Local Resources</span>
       <h2>Support, Close to Home</h2>
     </div>
-    <div class="resources-grid">
-      <a href="https://willcounty.gov/VAC/Services" target="_blank" rel="noopener" class="resource-card link-card">
+    <div class="resources-grid two-col">
+      <a href="https://veteransassistancewillco.org" target="_blank" rel="noopener" class="resource-card link-card">
         <span class="label">Will County</span>
         <span class="title">Veterans Assistance Commission</span>
-      </a>
-
-      <a href="tel:988,1" class="resource-card crisis-card">
-        <span class="label">24/7 Confidential Support</span>
-        <span class="title">Veterans Crisis Line</span>
-        <span class="number">Dial 988, then Press 1</span>
       </a>
 
       <a href="https://discover.va.gov" target="_blank" rel="noopener" class="resource-card link-card">
         <span class="label">U.S. Department of Veterans Affairs</span>
         <span class="title">Explore VA Benefits</span>
+      </a>
+
+      <a href="https://www.va.gov/hines-health-care/locations/joliet-va-clinic/" target="_blank" rel="noopener" class="resource-card link-card">
+        <span class="label">Edward Hines Jr. VA Hospital</span>
+        <span class="title">Joliet VA Clinic</span>
+      </a>
+
+      <a href="https://www.voaillinois.org/locations/hope-manor-joliet/" target="_blank" rel="noopener" class="resource-card link-card">
+        <span class="label">Volunteers of America Illinois</span>
+        <span class="title">Hope Manor Joliet — Veteran Housing</span>
       </a>
     </div>
 
