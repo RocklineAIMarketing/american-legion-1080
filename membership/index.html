@@ -338,6 +338,112 @@
     color: rgba(244,239,228,0.5);
   }
 
+  /* ---------- Officer Roster ---------- */
+  .roster {
+    background: var(--cream);
+    padding: 88px 5%;
+  }
+
+  .roster-heading {
+    text-align: center;
+    max-width: 1120px;
+    margin: 0 auto 48px;
+  }
+
+  .roster-heading span {
+    display: inline-block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .roster-heading h2 {
+    font-family: Georgia, serif;
+    font-size: clamp(26px, 3vw, 34px);
+    color: var(--navy-deep);
+    font-weight: 400;
+  }
+
+  .roster-commander-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 56px;
+  }
+
+  .roster-commander-row .roster-card {
+    width: 240px;
+  }
+
+  .roster-grid {
+    max-width: 820px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px 32px;
+  }
+
+  .roster-card {
+    text-align: center;
+  }
+
+  .roster-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 auto 14px;
+    background: repeating-linear-gradient(
+      135deg,
+      #E7E1D2 0px, #E7E1D2 18px,
+      #DCD5C2 18px, #DCD5C2 36px
+    );
+    border: 1px solid rgba(22,34,60,0.12);
+  }
+
+  .roster-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .roster-card .name {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    color: var(--navy-deep);
+    margin-bottom: 3px;
+  }
+
+  .roster-card .title {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    color: var(--red);
+    margin-bottom: 4px;
+  }
+
+  .roster-card .service {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 11.5px;
+    color: #6B6F76;
+  }
+
+  @media (max-width: 700px) {
+    .roster-grid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 400px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .roster-grid {
+      grid-template-columns: 1fr;
+      max-width: 240px;
+    }
+  }
+
 </style>
 </head>
 <body>
@@ -375,7 +481,86 @@
   </div>
 </header>
 
-<!-- Membership page content goes here -->
+<section class="roster">
+  <div class="roster-heading">
+    <span>Post Leadership</span>
+    <h2>Our Officers</h2>
+  </div>
+
+  <div class="roster-commander-row">
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Post Commander Photo" alt="Post Commander"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Post Commander</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+  </div>
+
+  <div class="roster-grid">
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Senior Vice Commander Photo" alt="Senior Vice Commander"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Senior Vice Commander</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Junior Vice Commander Photo" alt="Junior Vice Commander"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Junior Vice Commander</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Adjutant Photo" alt="Adjutant"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Adjutant</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Finance Officer Photo" alt="Finance Officer"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Finance Officer</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Chaplain Photo" alt="Chaplain"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Chaplain</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Historian Photo" alt="Historian"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Historian</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Judge Advocate Photo" alt="Judge Advocate"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Judge Advocate</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Sergeant-at-Arms Photo" alt="Sergeant-at-Arms"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Sergeant-at-Arms</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+
+    <div class="roster-card">
+      <div class="roster-photo"><img data-photo-spot="Veteran Service Officer Photo" alt="Service Officer"></div>
+      <p class="name">[Name]</p>
+      <p class="title">Service Officer</p>
+      <p class="service">[Branch • Years of Service]</p>
+    </div>
+  </div>
+</section>
 
 <script>
   const navToggle = document.getElementById('navToggle');
